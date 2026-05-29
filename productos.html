@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ecocera — Catálogo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="productos.css">
+</head>
+<body>
+
+  <div class="leaf-border left"></div>
+  <div class="leaf-border right"></div>
+
+  <div class="page-wrapper">
+
+    <nav>
+      <div class="logo-circle">
+        <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="13" cy="13" r="11" stroke="#3a5c3a" stroke-width="1.5"/>
+          <path d="M13 5 Q18 10 13 20 Q8 10 13 5Z" fill="#4a7a3a" opacity="0.7"/>
+          <path d="M5 13 Q13 8 21 13" stroke="#3a5c3a" stroke-width="1" fill="none"/>
+        </svg>
+      </div>
+      <ul>
+        <li><a href="#">Ecocera</a></li>
+        <li class="active"><a href="#">Catálogo</a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <p class="page-title">Catálogo</p>
+
+    <div class="filter-bar">
+      <input class="search-input" type="text" placeholder="Search" />
+      <div class="filter-chips">
+        <button class="chip active" onclick="setActive(this)">Nuevo</button>
+        <button class="chip" onclick="setActive(this)">Precio ascendente</button>
+        <button class="chip" onclick="setActive(this)">Precio descendente</button>
+        <button class="chip" onclick="setActive(this)">Rating</button>
+      </div>
+    </div>
+
+    <div class="product-grid">
+
+      <!-- Card 1 -->
+      <div class="product-card">
+        <div class="product-image">
+          <div class="img-corner tl"></div><div class="img-corner tr"></div>
+          <div class="img-corner bl"></div><div class="img-corner br"></div>
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="6" width="36" height="36" rx="2" stroke="#5a7a4a" stroke-width="1.5"/>
+            <path d="M6 6 L42 42M6 42 L42 6" stroke="#5a7a4a" stroke-width="1.5"/>
+            <circle cx="24" cy="24" r="6" stroke="#5a7a4a" stroke-width="1.2" fill="none"/>
+          </svg>
+        </div>
+        <div class="product-info">
+          <p class="product-name">Texto</p>
+          <p class="product-price">$0</p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="product-card">
+        <div class="product-image">
+          <div class="img-corner tl"></div><div class="img-corner tr"></div>
+          <div class="img-corner bl"></div><div class="img-corner br"></div>
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="6" width="36" height="36" rx="2" stroke="#5a7a4a" stroke-width="1.5"/>
+            <path d="M6 6 L42 42M6 42 L42 6" stroke="#5a7a4a" stroke-width="1.5"/>
+            <circle cx="24" cy="24" r="6" stroke="#5a7a4a" stroke-width="1.2" fill="none"/>
+          </svg>
+        </div>
+        <div class="product-info">
+          <p class="product-name">Texto</p>
+          <p class="product-price">$0</p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="product-card">
+        <div class="product-image">
+          <div class="img-corner tl"></div><div class="img-corner tr"></div>
+          <div class="img-corner bl"></div><div class="img-corner br"></div>
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="6" width="36" height="36" rx="2" stroke="#5a7a4a" stroke-width="1.5"/>
+            <path d="M6 6 L42 42M6 42 L42 6" stroke="#5a7a4a" stroke-width="1.5"/>
+            <circle cx="24" cy="24" r="6" stroke="#5a7a4a" stroke-width="1.2" fill="none"/>
+          </svg>
+        </div>
+        <div class="product-info">
+          <p class="product-name">Texto</p>
+          <p class="product-price">$0</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function setActive(btn) {
+      document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
