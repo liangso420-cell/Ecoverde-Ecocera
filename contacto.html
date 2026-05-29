@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ecocera</title>
+
+  <!-- Fuente elegante que coincide con el diseño original -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Raleway:wght@300;400&display=swap" rel="stylesheet" />
+
+  <!-- Hoja de estilos separada -->
+  <link rel="stylesheet" href="contacto.css" />
+</head>
+<body>
+
+  <!-- ==========================================
+       HOJAS DECORATIVAS IZQUIERDA
+       Se usan SVG inline para máxima fidelidad
+  =========================================== -->
+ <div class="hojas-lateral hojas-izquierda" aria-hidden="true">
+    <!-- Rama principal con múltiples hojas izquierda -->
+    <svg viewBox="0 0 220 580" xmlns="http://www.w3.org/2000/svg" class="svg-hojas">
+      <!-- Tallo principal -->
+      <path d="M160 580 Q140 480 120 400 Q100 320 90 240 Q80 160 100 80" stroke="#5a7a42" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+      <!-- Hoja 1 - grande arriba izquierda -->
+      <path d="M100 80 Q40 60 10 100 Q50 130 100 80Z" fill="#6b9e50" stroke="#4a7235" stroke-width="1"/>
+      <line x1="100" y1="80" x2="30" y2="97" stroke="#4a7235" stroke-width="0.8"/>
+      <line x1="70" y1="88" x2="55" y2="78" stroke="#4a7235" stroke-width="0.5"/>
+      <line x1="55" y1="92" x2="38" y2="86" stroke="#4a7235" stroke-width="0.5"/>
+
+      <!-- Hoja 2 - mediana arriba derecha -->
+      <path d="M105 110 Q160 80 175 120 Q145 140 105 110Z" fill="#7ab55e" stroke="#558040" stroke-width="1"/>
+      <line x1="105" y1="110" x2="165" y2="113" stroke="#558040" stroke-width="0.8"/>
+      <line x1="135" y1="106" x2="145" y2="97" stroke="#558040" stroke-width="0.5"/>
+      <line x1="150" y1="109" x2="162" y2="103" stroke="#558040" stroke-width="0.5"/>
+
+      <!-- Hoja 3 - grande izquierda media -->
+      <path d="M95 165 Q20 145 5 195 Q55 210 95 165Z" fill="#5c9045" stroke="#3d6630" stroke-width="1"/>
+      <line x1="95" y1="165" x2="18" y2="185" stroke="#3d6630" stroke-width="0.8"/>
+      <line x1="60" y1="172" x2="42" y2="163" stroke="#3d6630" stroke-width="0.5"/>
+      <line x1="38" y1="178" x2="22" y2="172" stroke="#3d6630" stroke-width="0.5"/>
+
+      <!-- Hoja 4 - pequeña derecha -->
+      <path d="M98 200 Q155 175 162 215 Q125 225 98 200Z" fill="#8dc46a" stroke="#60904a" stroke-width="1"/>
+      <line x1="98" y1="200" x2="155" y2="205" stroke="#60904a" stroke-width="0.8"/>
+
+      <!-- Hoja 5 - grande izquierda baja -->
+      <path d="M92 265 Q15 240 2 295 Q50 315 92 265Z" fill="#649948" stroke="#456830" stroke-width="1"/>
+      <line x1="92" y1="265" x2="15" y2="282" stroke="#456830" stroke-width="0.8"/>
+      <line x1="55" y1="272" x2="35" y2="262" stroke="#456830" stroke-width="0.5"/>
+      <line x1="32" y1="278" x2="16" y2="273" stroke="#456830" stroke-width="0.5"/>
+
+      <!-- Hoja 6 - mediana derecha -->
+      <path d="M97 305 Q162 275 172 320 Q135 335 97 305Z" fill="#76b058" stroke="#508038" stroke-width="1"/>
+      <line x1="97" y1="305" x2="162" y2="308" stroke="#508038" stroke-width="0.8"/>
+      <line x1="130" y1="298" x2="145" y2="288" stroke="#508038" stroke-width="0.5"/>
+
+      <!-- Hoja 7 - grande izquierda -->
+      <path d="M95 370 Q10 345 0 405 Q52 418 95 370Z" fill="#5a8c42" stroke="#3c6028" stroke-width="1"/>
+      <line x1="95" y1="370" x2="12" y2="390" stroke="#3c6028" stroke-width="0.8"/>
+      <line x1="52" y1="378" x2="30" y2="367" stroke="#3c6028" stroke-width="0.5"/>
+      <line x1="28" y1="385" x2="12" y2="378" stroke="#3c6028" stroke-width="0.5"/>
+
+      <!-- Hoja 8 - pequeña punta -->
+      <path d="M102 415 Q150 390 158 428 Q128 440 102 415Z" fill="#90c870" stroke="#64924e" stroke-width="1"/>
+      <line x1="102" y1="415" x2="150" y2="418" stroke="#64924e" stroke-width="0.8"/>
+
+      <!-- Hoja 9 - baja izquierda -->
+      <path d="M110 470 Q35 448 22 505 Q70 518 110 470Z" fill="#6aa84e" stroke="#488034" stroke-width="1"/>
+      <line x1="110" y1="470" x2="35" y2="488" stroke="#488034" stroke-width="0.8"/>
+      <line x1="70" y1="477" x2="50" y2="467" stroke="#488034" stroke-width="0.5"/>
+    </svg>
+  </div>
+
+  <!-- ==========================================
+       HOJAS DECORATIVAS DERECHA (espejo)
+  =========================================== -->
+  <div class="hojas-lateral hojas-derecha" aria-hidden="true">
+    <svg viewBox="0 0 220 580" xmlns="http://www.w3.org/2000/svg" class="svg-hojas" style="transform: scaleX(-1);">
+      <!-- Tallo principal -->
+      <path d="M160 580 Q140 480 120 400 Q100 320 90 240 Q80 160 100 80" stroke="#5a7a42" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+      <!-- Hoja 1 -->
+      <path d="M100 80 Q40 60 10 100 Q50 130 100 80Z" fill="#6b9e50" stroke="#4a7235" stroke-width="1"/>
+      <line x1="100" y1="80" x2="30" y2="97" stroke="#4a7235" stroke-width="0.8"/>
+      <line x1="70" y1="88" x2="55" y2="78" stroke="#4a7235" stroke-width="0.5"/>
+      <line x1="55" y1="92" x2="38" y2="86" stroke="#4a7235" stroke-width="0.5"/>
+
+      <!-- Hoja 2 -->
+      <path d="M105 110 Q160 80 175 120 Q145 140 105 110Z" fill="#7ab55e" stroke="#558040" stroke-width="1"/>
+      <line x1="105" y1="110" x2="165" y2="113" stroke="#558040" stroke-width="0.8"/>
+      <line x1="135" y1="106" x2="145" y2="97" stroke="#558040" stroke-width="0.5"/>
+
+      <!-- Hoja 3 -->
+      <path d="M95 165 Q20 145 5 195 Q55 210 95 165Z" fill="#5c9045" stroke="#3d6630" stroke-width="1"/>
+      <line x1="95" y1="165" x2="18" y2="185" stroke="#3d6630" stroke-width="0.8"/>
+      <line x1="60" y1="172" x2="42" y2="163" stroke="#3d6630" stroke-width="0.5"/>
+      <line x1="38" y1="178" x2="22" y2="172" stroke="#3d6630" stroke-width="0.5"/>
+
+      <!-- Hoja 4 -->
+      <path d="M98 200 Q155 175 162 215 Q125 225 98 200Z" fill="#8dc46a" stroke="#60904a" stroke-width="1"/>
+      <line x1="98" y1="200" x2="155" y2="205" stroke="#60904a" stroke-width="0.8"/>
+
+      <!-- Hoja 5 -->
+      <path d="M92 265 Q15 240 2 295 Q50 315 92 265Z" fill="#649948" stroke="#456830" stroke-width="1"/>
+      <line x1="92" y1="265" x2="15" y2="282" stroke="#456830" stroke-width="0.8"/>
+      <line x1="55" y1="272" x2="35" y2="262" stroke="#456830" stroke-width="0.5"/>
+      <line x1="32" y1="278" x2="16" y2="273" stroke="#456830" stroke-width="0.5"/>
+
+      <!-- Hoja 6 -->
+      <path d="M97 305 Q162 275 172 320 Q135 335 97 305Z" fill="#76b058" stroke="#508038" stroke-width="1"/>
+      <line x1="97" y1="305" x2="162" y2="308" stroke="#508038" stroke-width="0.8"/>
+
+      <!-- Hoja 7 -->
+      <path d="M95 370 Q10 345 0 405 Q52 418 95 370Z" fill="#5a8c42" stroke="#3c6028" stroke-width="1"/>
+      <line x1="95" y1="370" x2="12" y2="390" stroke="#3c6028" stroke-width="0.8"/>
+      <line x1="52" y1="378" x2="30" y2="367" stroke="#3c6028" stroke-width="0.5"/>
+
+      <!-- Hoja 8 -->
+      <path d="M102 415 Q150 390 158 428 Q128 440 102 415Z" fill="#90c870" stroke="#64924e" stroke-width="1"/>
+      <line x1="102" y1="415" x2="150" y2="418" stroke="#64924e" stroke-width="0.8"/>
+
+      <!-- Hoja 9 -->
+      <path d="M110 470 Q35 448 22 505 Q70 518 110 470Z" fill="#6aa84e" stroke="#488034" stroke-width="1"/>
+      <line x1="110" y1="470" x2="35" y2="488" stroke="#488034" stroke-width="0.8"/>
+    </svg>
+  </div>
+
+  <!-- ==========================================
+       ENCABEZADO — Nombre de la marca
+  =========================================== -->
+  <header class="encabezado">
+    <h1 class="marca">Ecocera</h1>
+  </header>
+
+  <!-- ==========================================
+       CONTENIDO PRINCIPAL
+  =========================================== -->
+  <main class="principal">
+
+    <!-- Tarjeta 1: Título y descripción -->
+    <div class="tarjeta tarjeta-descripcion">
+      <h2 class="titulo-contacto">Contacto</h2>
+      <p class="texto-descripcion">
+        Si deseas más información sobre nuestros productos<br>
+        ecológicos, puedes comunicarte con ecocera<br>
+        mediante los siguientes datos:
+      </p>
+    </div>
+
+    <!-- Tarjeta 2: Campos del formulario -->
+    <div class="tarjeta tarjeta-formulario">
+
+      <!-- Fila superior: Nombre y Correo Electrónico -->
+      <div class="fila-doble">
+
+        <!-- Campo Nombre -->
+        <div class="campo">
+          <label class="etiqueta" for="nombre">Nombre</label>
+          <input class="entrada" type="text" id="nombre" name="nombre" autocomplete="off" />
+        </div>
+
+        <!-- Campo Correo Electrónico -->
+        <div class="campo">
+          <label class="etiqueta" for="correo">Correo Electronico</label>
+          <input class="entrada" type="email" id="correo" name="correo" autocomplete="off" />
+        </div>
+
+      </div>
+
+      <!-- Campo Mensaje centrado -->
+      <div class="campo campo-mensaje">
+        <label class="etiqueta" for="mensaje">Mensaje</label>
+        <input class="entrada entrada-mensaje" type="text" id="mensaje" name="mensaje" autocomplete="off" />
+      </div>
+
+    </div>
+
+    <!-- Botón enviar fuera de la tarjeta -->
+    <button class="boton-enviar" type="button">Enviar Mensaje</button>
+
+  </main>
+
+  <!-- ==========================================
+       PIE DE PÁGINA — Redes Sociales
+  =========================================== -->
+  <footer class="pie">
+
+    <h3 class="titulo-redes">Redes Sociales</h3>
+
+    <div class="redes">
+
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/Ecocera.cr" target="_blank" rel="noopener noreferrer" class="red-enlace">
+        <!-- Logo oficial Instagram SVG -->
+        <svg class="logo-red" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="grad-ig" cx="30%" cy="107%" r="130%">
+              <stop offset="0%"  stop-color="#ffd600"/>
+              <stop offset="20%" stop-color="#ff7a00"/>
+              <stop offset="45%" stop-color="#ff0069"/>
+              <stop offset="75%" stop-color="#d300c5"/>
+              <stop offset="100%" stop-color="#7638fa"/>
+            </radialGradient>
+          </defs>
+          <rect width="48" height="48" rx="11" fill="url(#grad-ig)"/>
+          <rect x="12" y="12" width="24" height="24" rx="7" stroke="white" stroke-width="2.2" fill="none"/>
+          <circle cx="24" cy="24" r="6" stroke="white" stroke-width="2.2" fill="none"/>
+          <circle cx="34" cy="14" r="1.8" fill="white"/>
+        </svg>
+        <span class="nombre-red">Ecocera.cr</span>
+      </a>
+
+      <!-- TikTok -->
+      <a href="https://www.tiktok.com/@Ecocera.cr" target="_blank" rel="noopener noreferrer" class="red-enlace">
+        <!-- Logo oficial TikTok SVG -->
+        <svg class="logo-red" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <rect width="48" height="48" rx="11" fill="#010101"/>
+          <!-- Sombra cian -->
+          <path d="M31.5 11.5c.5 3.5 2.8 6 6 6.8v4.2c-2.2 0-4.3-.7-6-1.9v8.6c0 4.8-3.9 8.8-8.8 8.8s-8.8-3.9-8.8-8.8 3.9-8.8 8.8-8.8c.4 0 .7 0 1.1.1v4.3c-.4-.1-.7-.1-1.1-.1-2.5 0-4.6 2-4.6 4.6s2 4.6 4.6 4.6 4.6-2 4.6-4.6V11.5h4z" fill="#25F4EE" transform="translate(-1,-1)"/>
+          <!-- Sombra roja -->
+          <path d="M31.5 11.5c.5 3.5 2.8 6 6 6.8v4.2c-2.2 0-4.3-.7-6-1.9v8.6c0 4.8-3.9 8.8-8.8 8.8s-8.8-3.9-8.8-8.8 3.9-8.8 8.8-8.8c.4 0 .7 0 1.1.1v4.3c-.4-.1-.7-.1-1.1-.1-2.5 0-4.6 2-4.6 4.6s2 4.6 4.6 4.6 4.6-2 4.6-4.6V11.5h4z" fill="#FE2C55" transform="translate(1,1)"/>
+          <!-- Forma blanca principal -->
+          <path d="M31.5 11.5c.5 3.5 2.8 6 6 6.8v4.2c-2.2 0-4.3-.7-6-1.9v8.6c0 4.8-3.9 8.8-8.8 8.8s-8.8-3.9-8.8-8.8 3.9-8.8 8.8-8.8c.4 0 .7 0 1.1.1v4.3c-.4-.1-.7-.1-1.1-.1-2.5 0-4.6 2-4.6 4.6s2 4.6 4.6 4.6 4.6-2 4.6-4.6V11.5h4z" fill="white"/>
+        </svg>
+        <span class="nombre-red">Ecocera.cr</span>
+      </a>
+
+    </div>
+
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,341 @@
+/* ============================================================
+   VARIABLES DE COLOR
+   Extraídas exactamente de la fotografía de referencia
+   ============================================================ */
+   :root {
+    --color-fondo:          #e9e5d2;   /* Beige claro — fondo de toda la página */
+    --color-header-footer:  #d8d4be;   /* Beige más oscuro — header y footer */
+    --color-tarjeta:        #cdc98e;   /* Verde-beige — fondo de las tarjetas */
+    --color-borde-tarjeta:  #b5b07a;   /* Borde de las tarjetas */
+    --color-input-fondo:    #f2efe0;   /* Crema claro — fondo de los inputs */
+    --color-input-borde:    #c0b888;   /* Borde de los inputs */
+    --color-boton-fondo:    #f0ece0;   /* Blanco crema — fondo del botón */
+    --color-boton-borde:    #9a9060;   /* Borde del botón */
+    --color-texto:          #3e3a28;   /* Marrón oscuro — texto principal */
+    --color-texto-suave:    #6e6a4a;   /* Marrón suave — texto descriptivo */
+    --sombra-tarjeta:       rgba(90, 85, 55, 0.15);
+  }
+  
+  /* ============================================================
+     RESET GENERAL
+     ============================================================ */
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* ============================================================
+     BODY — Fondo beige, columna centrada
+     ============================================================ */
+  body {
+    background-color: var(--color-fondo);
+    font-family: 'Raleway', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow-x: hidden;
+  }
+  
+  /* ============================================================
+     HOJAS LATERALES — Posicionadas fijas a los costados
+     El SVG se estira verticalmente para cubrir toda la altura
+     ============================================================ */
+  .hojas-lateral {
+    position: fixed;
+    top: 0;
+    width: 200px;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+  
+  /* Hojas izquierda — pegadas al borde izquierdo */
+  .hojas-izquierda {
+    left: 0;
+  }
+  
+  /* Hojas derecha — pegadas al borde derecho */
+  .hojas-derecha {
+    right: 0;
+  }
+  
+  /* El SVG ocupa todo el alto del panel lateral */
+  .svg-hojas {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  
+  /* ============================================================
+     ENCABEZADO — Franja beige con el nombre "Ecocera"
+     ============================================================ */
+  .encabezado {
+    width: 100%;
+    background-color: var(--color-header-footer);
+    text-align: center;
+    padding: 13px 0 11px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Nombre de la marca */
+  .marca {
+    font-family: 'Cinzel', serif;
+    font-size: 1.45rem;
+    font-weight: 400;
+    color: var(--color-texto);
+    letter-spacing: 0.18em;
+  }
+  
+  /* ============================================================
+     CONTENIDO PRINCIPAL — Columna central con las tarjetas
+     ============================================================ */
+  .principal {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 600px;
+    padding: 28px 20px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    flex: 1;
+  }
+  
+  /* ============================================================
+     TARJETAS — Estilo compartido para ambas tarjetas
+     ============================================================ */
+  .tarjeta {
+    width: 100%;
+    background-color: var(--color-tarjeta);
+    border: 1.5px solid var(--color-borde-tarjeta);
+    border-radius: 28px;
+    box-shadow: 0 3px 12px var(--sombra-tarjeta);
+  }
+  
+  /* ============================================================
+     TARJETA 1 — Descripción (título + texto)
+     ============================================================ */
+  .tarjeta-descripcion {
+    padding: 22px 28px 20px;
+    text-align: center;
+  }
+  
+  /* Título "Contacto" */
+  .titulo-contacto {
+    font-family: 'Cinzel', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--color-texto);
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+  }
+  
+  /* Texto descriptivo grisáceo, igual al de la foto */
+  .texto-descripcion {
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 300;
+    color: var(--color-texto-suave);
+    line-height: 1.7;
+  }
+  
+  /* ============================================================
+     TARJETA 2 — Formulario (campos de entrada)
+     ============================================================ */
+  .tarjeta-formulario {
+    padding: 22px 30px 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  
+  /* Fila con dos columnas: Nombre y Correo Electrónico */
+  .fila-doble {
+    display: flex;
+    gap: 22px;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  /* Grupo de etiqueta + input */
+  .campo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    flex: 1;
+  }
+  
+  /* Campo de mensaje centrado */
+  .campo-mensaje {
+    align-items: center;
+    width: 100%;
+    max-width: 420px;
+  }
+  
+  /* Etiquetas de los campos */
+  .etiqueta {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--color-texto);
+    letter-spacing: 0.06em;
+  }
+  
+  /* ============================================================
+     INPUTS — Estilo de los campos de texto
+     ============================================================ */
+  .entrada {
+    width: 100%;
+    background-color: var(--color-input-fondo);
+    border: 1px solid var(--color-input-borde);
+    border-radius: 5px;
+    padding: 7px 10px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 300;
+    color: var(--color-texto);
+    outline: none;
+    /* Transición suave al enfocar */
+    transition: border-color 0.22s ease, box-shadow 0.22s ease;
+  }
+  
+  /* Efecto de enfoque en los inputs */
+  .entrada:focus {
+    border-color: var(--color-boton-borde);
+    box-shadow: 0 0 0 3px rgba(154, 144, 96, 0.18);
+  }
+  
+  /* Input del mensaje — un poco más ancho */
+  .entrada-mensaje {
+    max-width: 420px;
+    width: 100%;
+  }
+  
+  /* ============================================================
+     BOTÓN "Enviar Mensaje"
+     ============================================================ */
+  .boton-enviar {
+    background-color: var(--color-boton-fondo);
+    border: 1.5px solid var(--color-boton-borde);
+    border-radius: 22px;
+    padding: 10px 42px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.92rem;
+    font-weight: 400;
+    color: var(--color-texto);
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    box-shadow: 0 2px 8px var(--sombra-tarjeta);
+    /* Transición suave */
+    transition: background-color 0.22s ease,
+                box-shadow 0.22s ease,
+                transform 0.14s ease;
+  }
+  
+  /* Hover del botón */
+  .boton-enviar:hover {
+    background-color: var(--color-tarjeta);
+    box-shadow: 0 5px 16px var(--sombra-tarjeta);
+    transform: translateY(-2px);
+  }
+  
+  /* Clic del botón */
+  .boton-enviar:active {
+    transform: translateY(0px);
+    box-shadow: 0 1px 5px var(--sombra-tarjeta);
+  }
+  
+  /* ============================================================
+     PIE DE PÁGINA — Franja "Redes Sociales" con íconos
+     ============================================================ */
+  .pie {
+    width: 100%;
+    background-color: var(--color-header-footer);
+    padding: 14px 20px 16px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    margin-top: auto;
+  }
+  
+  /* Título "Redes Sociales" */
+  .titulo-redes {
+    font-family: 'Cinzel', serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--color-texto);
+    letter-spacing: 0.12em;
+    margin-bottom: 12px;
+  }
+  
+  /* Contenedor de los dos íconos de redes */
+  .redes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+  }
+  
+  /* Enlace de cada red social */
+  .red-enlace {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    text-decoration: none;
+    color: var(--color-texto);
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    transition: opacity 0.2s ease;
+  }
+  
+  /* Hover en el enlace */
+  .red-enlace:hover {
+    opacity: 0.65;
+  }
+  
+  /* Tamaño de los logos de redes */
+  .logo-red {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+  }
+  
+  /* ============================================================
+     RESPONSIVIDAD — Pantallas pequeñas (celulares)
+     ============================================================ */
+  @media (max-width: 500px) {
+  
+    /* Los campos se apilan verticalmente en móvil */
+    .fila-doble {
+      flex-direction: column;
+      gap: 14px;
+    }
+  
+    /* El campo de mensaje ocupa todo el ancho */
+    .campo-mensaje {
+      max-width: 100%;
+    }
+  
+    .entrada-mensaje {
+      max-width: 100%;
+    }
+  
+    /* Las hojas laterales se reducen en móvil */
+    .hojas-lateral {
+      width: 90px;
+    }
+  
+    /* Las redes sociales se acercan */
+    .redes {
+      gap: 40px;
+    }
+  }
