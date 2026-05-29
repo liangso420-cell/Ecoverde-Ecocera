@@ -167,6 +167,7 @@ nav {
     color: #3a2a1e;
     margin-bottom: 18px;
     font-weight: 600;
+    text-align: center;
 }
 
 /* ECOVELA */
@@ -175,12 +176,14 @@ nav {
     grid-template-columns: 1fr 1fr;
     gap: 20px;
     align-items: start;
+    padding-left: 100px;
 }
 
 .ecovela-text {
     font-size: 14px;
     line-height: 1.85;
     color: #5a4535;
+    padding-left: 100px;
 }
 
 /* IMÁGENES */
@@ -193,9 +196,9 @@ img {
 
 /* PRODUCTO */
 .candle-img {
-    width: 100%;
+    width: 180px;
     height: 180px;
-    background: linear-gradient(135deg, #e8dcc8 0%, #d4c4a8 100%);
+    background: linear-gradient(135deg, #DDDDB7 0%, #DDDDB7 100%);
     border-radius: 12px;
     border: 1px solid #c9b896;
 
@@ -204,7 +207,8 @@ img {
     justify-content: center;
 
     overflow: hidden;
-    padding: 10px;
+    padding: 20px;
+    padding-left: 18px;
 }
 
 .candle-img img {
@@ -250,6 +254,7 @@ img {
     font-size: 13px;
     line-height: 1.8;
     color: #5a4535;
+
 }
 
 /* FOOTER */
