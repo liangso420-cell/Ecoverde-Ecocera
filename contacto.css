@@ -339,3 +339,142 @@
       gap: 40px;
     }
   }
+  /* ============================================================
+   RESPONSIVE — Tabletas grandes (1024px o menos)
+   ============================================================ */
+@media (max-width: 1024px) {
+
+    /* Hojas laterales más angostas en pantallas medianas */
+    .hojas-lateral {
+      width: 150px;
+    }
+  }
+  
+  /* ============================================================
+     RESPONSIVE — Tabletas pequeñas (768px o menos)
+     ============================================================ */
+  @media (max-width: 768px) {
+  
+    /* Hojas laterales más pequeñas */
+    .hojas-lateral {
+      width: 110px;
+    }
+  
+    /* El contenido central se estrecha un poco menos */
+    .principal {
+      max-width: 100%;
+      padding: 22px 130px 20px;
+    }
+  
+    /* Título más pequeño */
+    .marca {
+      font-size: 1.25rem;
+    }
+  
+    /* Redes más juntas */
+    .redes {
+      gap: 50px;
+    }
+  }
+  @media (max-width: 600px) {
+  
+    /* Hojas reducidas para no tapar el contenido */
+    .hojas-lateral {
+      width: 80px;
+    }
+  
+    /* Padding lateral ajustado al ancho de las hojas */
+    .principal {
+      padding: 20px 90px 20px;
+    }
+  
+    /* Los dos campos se apilan verticalmente */
+    .fila-doble {
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+  
+    /* Cada campo ocupa el ancho completo */
+    .campo {
+      width: 100%;
+      max-width: 100%;
+      align-items: center;
+    }
+  
+    /* Inputs ocupan el ancho completo */
+    .entrada {
+      width: 100%;
+      max-width: 100%;
+    }
+  
+    /* Input de mensaje también al 100% */
+    .entrada-mensaje {
+      max-width: 100%;
+    }
+  
+    /* Campo mensaje al 100% */
+    .campo-mensaje {
+      max-width: 100%;
+    }
+  }
+  
+  @media (max-width: 420px) {
+  
+    /* Hojas muy pequeñas para no invadir el contenido */
+    .hojas-lateral {
+      width: 55px;
+    }
+  
+    /* Padding mínimo para aprovechar el espacio */
+    .principal {
+      padding: 16px 65px 16px;
+    }
+  
+    /* Nombre de la marca más compacto */
+    .marca {
+      font-size: 1.1rem;
+      letter-spacing: 0.12em;
+    }
+  
+    /* Tarjetas con menos padding interior */
+    .tarjeta-descripcion {
+      padding: 16px 18px 14px;
+    }
+  
+    .tarjeta-formulario {
+      padding: 16px 18px 16px;
+    }
+  
+    /* Texto descriptivo más pequeño */
+    .texto-descripcion {
+      font-size: 0.78rem;
+    }
+  
+    /* Título "Contacto" más compacto */
+    .titulo-contacto {
+      font-size: 1.2rem;
+    }
+  
+    /* Botón más compacto */
+    .boton-enviar {
+      padding: 9px 30px;
+      font-size: 0.84rem;
+    }
+  
+    /* Logos de redes más pequeños */
+    .logo-red {
+      width: 28px;
+      height: 28px;
+    }
+  
+    /* Redes más juntas */
+    .redes {
+      gap: 28px;
+    }
+  
+    /* Nombre de la red más pequeño */
+    .nombre-red {
+      font-size: 0.78rem;
+    }
+  }
