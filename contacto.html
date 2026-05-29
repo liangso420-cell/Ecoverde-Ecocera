@@ -10,6 +10,7 @@
 
   <!-- Hoja de estilos separada -->
   <link rel="stylesheet" href="contacto.css" />
+
 </head>
 <body>
 
@@ -230,6 +231,31 @@
     </div>
 
   </footer>
+
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <!-- Script del formulario -->
+  <script src="script.js"></script>
+
+  <!-- Notificación de envío (oculta por defecto) -->
+  <div id="notificacion" style="
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #6b9e50;
+    color: white;
+    padding: 14px 32px;
+    border-radius: 30px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 18px rgba(90,122,66,0.35);
+    z-index: 999;
+    transition: opacity 0.4s ease;
+  "></div>
 
 </body>
 </html>
