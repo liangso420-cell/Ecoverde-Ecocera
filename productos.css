@@ -55,27 +55,29 @@ nav {
   display: flex;
   align-items: center;
   padding: 18px 0 14px;
-  gap: 12px;
+  gap: 20px;
   border-bottom: 1px solid var(--border-leaf);
 }
 .logo-circle {
-  width: 44px;
-  height: 44px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
-  background: var(--cream-dark);
+  background: var(--white-soft);
   border: 2px solid var(--green-mid);
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
 }
-.logo-circle svg { width: 26px; height: 26px; }
+.logo-circle img {
+  width: 104px;
+  height: 104px;
+  object-fit: contain;
+}
 nav ul {
   list-style: none;
   display: flex;
   gap: 32px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0;
 }
 nav ul li a {
   text-decoration: none;
@@ -94,15 +96,23 @@ nav ul li.active a {
   color: var(--text-dark);
 }
 
-/* ── Page title ── */
+.page-header {
+  background: var(--cream-dark);
+  border-radius: 18px;
+  padding: 18px 22px;
+  margin-bottom: 24px;
+  text-align: center;
+  box-shadow: inset 0 0 0 1px rgba(90, 120, 70, 0.08);
+}
+
 .page-title {
   font-family: 'Lato', sans-serif;
-  font-size: 13px;
-  font-weight: 300;
-  letter-spacing: 0.12em;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--text-muted);
-  padding: 18px 0 14px;
+  color: var(--green-deep);
+  margin: 0;
 }
 
 /* ── Filter bar ── */
@@ -215,4 +225,78 @@ nav ul li.active a {
   font-size: 15px;
   font-weight: 600;
   color: var(--green-deep);
+}
+
+/* ── Responsive mobile layout ── */
+@media (max-width: 768px) {
+  .page-wrapper {
+    padding: 0 18px;
+  }
+
+  .leaf-border {
+    display: none;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    padding: 16px 0 12px;
+  }
+
+  .logo-circle {
+    width: 88px;
+    height: 88px;
+  }
+
+  .logo-circle img {
+    width: 72px;
+    height: 72px;
+  }
+
+  nav ul {
+    gap: 18px;
+    justify-content: center;
+  }
+
+  .page-header {
+    padding: 14px 16px;
+    margin-bottom: 20px;
+  }
+
+  .page-title {
+    font-size: 13px;
+  }
+
+  .filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+
+  .filter-chips {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .product-card {
+    border-radius: 14px;
+  }
+
+  .product-image {
+    aspect-ratio: 4 / 3;
+  }
+
+  .product-info {
+    padding: 14px 16px 16px;
+  }
 }
