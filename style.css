@@ -61,6 +61,7 @@ nav {
     align-items: center;
 }
 
+<<<<<<< HEAD
 .hero-leaves {
     position: absolute;
     top: 0;
@@ -73,6 +74,205 @@ nav {
 }
 
 /* LOGO */
+=======
+ .logo-circle {
+     width: 100px;
+     height: 100px;
+     margin: 0 auto 18px;
+     background: #f0e8d4;
+     border-radius: 50%;
+     border: 2px solid #c9b896;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     flex-direction: column;
+ }
+
+ .logo-icon {
+     font-size: 32px;
+     margin-bottom: 2px;
+ }
+
+ .logo-name {
+     font-size: 10px;
+     letter-spacing: 0.18em;
+     color: #7a6450;
+     font-family: 'Lato', sans-serif;
+     font-weight: 700;
+ }
+
+ .hero-tagline {
+     font-size: 15px;
+     color: #7a6450;
+     border-bottom: 1px solid #a08060;
+     display: inline-block;
+     padding-bottom: 3px;
+     letter-spacing: 0.04em;
+     font-weight: 300;
+ }
+
+ /* DECORATIVE */
+ .leaf-border {
+     text-align: center;
+     font-size: 20px;
+     opacity: 0.45;
+     padding: 8px 0;
+     letter-spacing: 8px;
+ }
+
+ .divider {
+     height: 1px;
+     background: linear-gradient(90deg, transparent, #c9b896, transparent);
+     margin: 4px 32px;
+ }
+
+ /* SECTIONS */
+ .section {
+     padding: 32px 24px;
+     max-width: 900px;
+     margin: 0 auto;
+ }
+
+ .section-title {
+     font-family: 'Playfair Display', serif;
+     font-size: 24px;
+     color: #3a2a1e;
+     margin-bottom: 18px;
+     font-weight: 600;
+ }
+
+ /* ECOVELA */
+ .ecovela-grid {
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+     gap: 20px;
+     align-items: start;
+ }
+
+ .ecovela-text {
+     font-size: 14px;
+     line-height: 1.85;
+     color: #5a4535;
+ }
+
+ .candle-img {
+    width: 100%;
+    height: 180px;
+    background: linear-gradient(135deg, #e8dcc8 0%, #d4c4a8 100%);
+    border-radius: 12px;
+    border: 1px solid #c9b896;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 64px;
+    overflow: hidden; /* añade esto */
+}
+
+/* añade esta regla nueva */
+.candle-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+ .card {
+     background: #ede6d4;
+     border: 1px solid #c9b896;
+     border-radius: 14px;
+     padding: 22px 18px;
+     text-align: center;
+ }
+
+ .card-title {
+     font-family: 'Playfair Display', serif;
+     font-size: 17px;
+     color: #3a2a1e;
+     margin-bottom: 12px;
+     font-weight: 600;
+ }
+
+ .card-text {
+     font-size: 13px;
+     line-height: 1.8;
+     color: #5a4535;
+ }
+
+ /* FOOTER */
+ footer {
+     text-align: center;
+     padding: 24px;
+     font-size: 12px;
+     color: #a08060;
+     border-top: 1px solid #d8cebc;
+     margin-top: 12px;
+ }
+
+ /* RESPONSIVE */
+ @media (max-width: 520px) {
+     .ecovela-grid {
+         grid-template-columns: 1fr;
+     }
+
+     .cards-grid {
+         grid-template-columns: 1fr;
+     }
+
+     .candle-img {
+         height: 140px;
+     }
+ }
+/* IMÁGENES GENERALES */
+img{
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 50px;
+}
+
+/* LOGO */
+.logo-circle img{
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 5px;
+}
+
+/* IMAGEN DEL PRODUCTO */
+.candle-img img{
+    width: 140px;
+    height: auto;
+    object-fit: contain;
+}
+.candle-img {
+    width: 180px;
+    height: 180px;
+    background: linear-gradient(135deg, #7fa163 0%, #d4c4a8 100%);
+    border-radius: 12px;
+    border: 1px solid #c9b896;
+
+    display: flex;
+    align-items: center;      /* centro vertical */
+    justify-content: flex-end; /* derecha */
+
+    overflow: hidden;
+    padding: 10px;
+}
+
+/* IMPORTANTE: controlar la imagen */
+.candle-img img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+#producto{
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
+    display: block;
+    border-radius: 20px;
+}
+>>>>>>> 56546c2 (Hecho Liang:)
 .logo-circle {
     width: 320px;
     height: 320px;
@@ -131,6 +331,7 @@ nav {
     text-align: center;
     margin: 0 auto;
 }
+<<<<<<< HEAD
 
 /* DECORATIVE */
 .leaf-border {
@@ -167,6 +368,7 @@ nav {
     color: #3a2a1e;
     margin-bottom: 18px;
     font-weight: 600;
+    text-align: center;
 }
 
 /* ECOVELA */
@@ -175,12 +377,14 @@ nav {
     grid-template-columns: 1fr 1fr;
     gap: 20px;
     align-items: start;
+    padding-left: 100px;
 }
 
 .ecovela-text {
     font-size: 14px;
     line-height: 1.85;
     color: #5a4535;
+    padding-left: 100px;
 }
 
 /* IMÁGENES */
@@ -193,9 +397,9 @@ img {
 
 /* PRODUCTO */
 .candle-img {
-    width: 100%;
+    width: 180px;
     height: 180px;
-    background: linear-gradient(135deg, #e8dcc8 0%, #d4c4a8 100%);
+    background: linear-gradient(135deg, #DDDDB7 0%, #DDDDB7 100%);
     border-radius: 12px;
     border: 1px solid #c9b896;
 
@@ -204,7 +408,8 @@ img {
     justify-content: center;
 
     overflow: hidden;
-    padding: 10px;
+    padding: 20px;
+    padding-left: 18px;
 }
 
 .candle-img img {
@@ -250,6 +455,7 @@ img {
     font-size: 13px;
     line-height: 1.8;
     color: #5a4535;
+
 }
 
 /* FOOTER */
@@ -285,4 +491,22 @@ footer {
         width: 180px;
         height: 180px;
     }
+=======
+.section {
+    text-align: center;
+}
+.ecovela-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.ecovela-text {
+    max-width: 600px;
+    margin: 0 auto;
+}
+.ecovela-grid {
+    grid-template-columns: 1fr 1fr;
+>>>>>>> 56546c2 (Hecho Liang:)
 }
