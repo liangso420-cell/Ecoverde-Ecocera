@@ -3,198 +3,392 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ecocera</title>
-
-  <!-- Fuente elegante que coincide con el diseño original -->
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Raleway:wght@300;400&display=swap" rel="stylesheet" />
-
-  <!-- Hoja de estilos separada -->
-  <link rel="stylesheet" href="contacto.css" />
-
+  <title>Ecocera — Contacto</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+ 
+    :root {
+      --verde-oscuro: #4a7235;
+      --verde-medio: #6b9e50;
+      --verde-claro: #8dc46a;
+      --crema: #f8f5ef;
+      --crema-oscuro: #ede8de;
+      --texto: #2c3e20;
+      --texto-suave: #5a6e4a;
+    }
+ 
+    body {
+      font-family: 'Raleway', sans-serif;
+      background-color: var(--crema);
+      color: var(--texto);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+      position: relative;
+    }
+ 
+    /* ── HOJAS LATERALES ── */
+    .hojas-lateral {
+      position: fixed;
+      top: 0;
+      width: 180px;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.85;
+    }
+    .hojas-izquierda { left: 0; }
+    .hojas-derecha   { right: 0; }
+    .svg-hojas { width: 100%; height: 100%; }
+ 
+    /* ── ENCABEZADO ── */
+    header {
+      width: 100%;
+      text-align: center;
+      padding: 2.5rem 1rem 1rem;
+      position: relative;
+      z-index: 10;
+    }
+    .marca {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      color: var(--verde-oscuro);
+      text-transform: uppercase;
+    }
+    .nav-links {
+      margin-top: 0.8rem;
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--texto-suave);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover,
+    .nav-links a.activo { color: var(--verde-oscuro); }
+ 
+    /* ── SEPARADOR ── */
+    .divisor {
+      width: 60px;
+      height: 1.5px;
+      background: var(--verde-medio);
+      margin: 0.5rem auto 0;
+      opacity: 0.6;
+    }
+ 
+    /* ── PRINCIPAL ── */
+    main {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 640px;
+      padding: 2rem 1.5rem 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.6rem;
+    }
+ 
+    /* ── TARJETA DESCRIPCIÓN ── */
+    .tarjeta-descripcion {
+      text-align: center;
+    }
+    .titulo-contacto {
+      font-family: 'Cinzel', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      color: var(--verde-oscuro);
+      margin-bottom: 0.8rem;
+    }
+    .texto-descripcion {
+      font-size: 0.88rem;
+      font-weight: 300;
+      line-height: 1.85;
+      letter-spacing: 0.04em;
+      color: var(--texto-suave);
+    }
+ 
+    /* ── TARJETA FORMULARIO ── */
+    .tarjeta-formulario {
+      width: 100%;
+      background: #fff;
+      border: 1px solid rgba(106,158,80,0.25);
+      border-radius: 12px;
+      padding: 2rem 2rem 1.8rem;
+      box-shadow: 0 4px 24px rgba(74,114,53,0.08);
+    }
+ 
+    .fila-doble {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin-bottom: 1.2rem;
+    }
+ 
+    .campo { display: flex; flex-direction: column; gap: 0.4rem; }
+    .campo-mensaje { margin-top: 0.2rem; }
+ 
+    .etiqueta {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--texto-suave);
+      font-weight: 500;
+    }
+ 
+    .entrada {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--texto);
+      background: transparent;
+      border: none;
+      border-bottom: 1.5px solid rgba(74,114,53,0.35);
+      padding: 0.5rem 0.1rem;
+      outline: none;
+      transition: border-color 0.25s;
+      width: 100%;
+    }
+    .entrada:focus { border-color: var(--verde-medio); }
+    .entrada.error { border-color: #c0392b; }
+ 
+    .entrada-mensaje { width: 100%; }
+ 
+    /* ── MENSAJE DE ERROR ── */
+    .msg-error {
+      font-size: 0.7rem;
+      color: #c0392b;
+      letter-spacing: 0.05em;
+      min-height: 14px;
+    }
+ 
+    /* ── BOTÓN ENVIAR ── */
+    .boton-enviar {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: #fff;
+      background: var(--verde-medio);
+      border: none;
+      border-radius: 30px;
+      padding: 0.75rem 2.6rem;
+      cursor: pointer;
+      transition: background 0.25s, transform 0.15s;
+      margin-top: 0.4rem;
+      align-self: center;
+    }
+    .boton-enviar:hover  { background: var(--verde-oscuro); }
+    .boton-enviar:active { transform: scale(0.97); }
+    .boton-enviar:disabled {
+      background: #b0c8a0;
+      cursor: not-allowed;
+      transform: none;
+    }
+ 
+    /* ── FOOTER ── */
+    footer {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 640px;
+      padding: 1.5rem 1rem 2.5rem;
+      text-align: center;
+    }
+    .titulo-redes {
+      font-family: 'Cinzel', serif;
+      font-size: 0.88rem;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--verde-oscuro);
+      margin-bottom: 1.2rem;
+    }
+    .redes { display: flex; gap: 2rem; justify-content: center; }
+    .red-enlace {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.45rem;
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+    .red-enlace:hover { transform: translateY(-3px); }
+    .logo-red { width: 38px; height: 38px; border-radius: 9px; }
+    .nombre-red {
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      color: var(--texto-suave);
+    }
+ 
+    /* ── NOTIFICACIÓN ── */
+    #notificacion {
+      display: none;
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--verde-medio);
+      color: #fff;
+      padding: 14px 32px;
+      border-radius: 30px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      box-shadow: 0 4px 18px rgba(90,122,66,0.35);
+      z-index: 999;
+      transition: opacity 0.4s ease;
+    }
+    #notificacion.error-notif { background: #c0392b; }
+ 
+    /* ── RESPONSIVE ── */
+    @media (max-width: 560px) {
+      .hojas-lateral { width: 100px; }
+      .fila-doble { grid-template-columns: 1fr; }
+      .tarjeta-formulario { padding: 1.5rem 1.2rem; }
+    }
+  </style>
 </head>
 <body>
-
-  <!-- ==========================================
-       HOJAS DECORATIVAS IZQUIERDA
-       Se usan SVG inline para máxima fidelidad
-  =========================================== -->
- <div class="hojas-lateral hojas-izquierda" aria-hidden="true">
-    <!-- Rama principal con múltiples hojas izquierda -->
+ 
+  <!-- HOJAS IZQUIERDA -->
+  <div class="hojas-lateral hojas-izquierda" aria-hidden="true">
     <svg viewBox="0 0 220 580" xmlns="http://www.w3.org/2000/svg" class="svg-hojas">
-      <!-- Tallo principal -->
       <path d="M160 580 Q140 480 120 400 Q100 320 90 240 Q80 160 100 80" stroke="#5a7a42" stroke-width="3" fill="none" stroke-linecap="round"/>
-
-      <!-- Hoja 1 - grande arriba izquierda -->
       <path d="M100 80 Q40 60 10 100 Q50 130 100 80Z" fill="#6b9e50" stroke="#4a7235" stroke-width="1"/>
       <line x1="100" y1="80" x2="30" y2="97" stroke="#4a7235" stroke-width="0.8"/>
       <line x1="70" y1="88" x2="55" y2="78" stroke="#4a7235" stroke-width="0.5"/>
-      <line x1="55" y1="92" x2="38" y2="86" stroke="#4a7235" stroke-width="0.5"/>
-
-      <!-- Hoja 2 - mediana arriba derecha -->
       <path d="M105 110 Q160 80 175 120 Q145 140 105 110Z" fill="#7ab55e" stroke="#558040" stroke-width="1"/>
       <line x1="105" y1="110" x2="165" y2="113" stroke="#558040" stroke-width="0.8"/>
-      <line x1="135" y1="106" x2="145" y2="97" stroke="#558040" stroke-width="0.5"/>
-      <line x1="150" y1="109" x2="162" y2="103" stroke="#558040" stroke-width="0.5"/>
-
-      <!-- Hoja 3 - grande izquierda media -->
       <path d="M95 165 Q20 145 5 195 Q55 210 95 165Z" fill="#5c9045" stroke="#3d6630" stroke-width="1"/>
       <line x1="95" y1="165" x2="18" y2="185" stroke="#3d6630" stroke-width="0.8"/>
       <line x1="60" y1="172" x2="42" y2="163" stroke="#3d6630" stroke-width="0.5"/>
-      <line x1="38" y1="178" x2="22" y2="172" stroke="#3d6630" stroke-width="0.5"/>
-
-      <!-- Hoja 4 - pequeña derecha -->
       <path d="M98 200 Q155 175 162 215 Q125 225 98 200Z" fill="#8dc46a" stroke="#60904a" stroke-width="1"/>
       <line x1="98" y1="200" x2="155" y2="205" stroke="#60904a" stroke-width="0.8"/>
-
-      <!-- Hoja 5 - grande izquierda baja -->
       <path d="M92 265 Q15 240 2 295 Q50 315 92 265Z" fill="#649948" stroke="#456830" stroke-width="1"/>
       <line x1="92" y1="265" x2="15" y2="282" stroke="#456830" stroke-width="0.8"/>
       <line x1="55" y1="272" x2="35" y2="262" stroke="#456830" stroke-width="0.5"/>
-      <line x1="32" y1="278" x2="16" y2="273" stroke="#456830" stroke-width="0.5"/>
-
-      <!-- Hoja 6 - mediana derecha -->
       <path d="M97 305 Q162 275 172 320 Q135 335 97 305Z" fill="#76b058" stroke="#508038" stroke-width="1"/>
       <line x1="97" y1="305" x2="162" y2="308" stroke="#508038" stroke-width="0.8"/>
-      <line x1="130" y1="298" x2="145" y2="288" stroke="#508038" stroke-width="0.5"/>
-
-      <!-- Hoja 7 - grande izquierda -->
       <path d="M95 370 Q10 345 0 405 Q52 418 95 370Z" fill="#5a8c42" stroke="#3c6028" stroke-width="1"/>
       <line x1="95" y1="370" x2="12" y2="390" stroke="#3c6028" stroke-width="0.8"/>
       <line x1="52" y1="378" x2="30" y2="367" stroke="#3c6028" stroke-width="0.5"/>
-      <line x1="28" y1="385" x2="12" y2="378" stroke="#3c6028" stroke-width="0.5"/>
-
-      <!-- Hoja 8 - pequeña punta -->
       <path d="M102 415 Q150 390 158 428 Q128 440 102 415Z" fill="#90c870" stroke="#64924e" stroke-width="1"/>
       <line x1="102" y1="415" x2="150" y2="418" stroke="#64924e" stroke-width="0.8"/>
-
-      <!-- Hoja 9 - baja izquierda -->
       <path d="M110 470 Q35 448 22 505 Q70 518 110 470Z" fill="#6aa84e" stroke="#488034" stroke-width="1"/>
       <line x1="110" y1="470" x2="35" y2="488" stroke="#488034" stroke-width="0.8"/>
-      <line x1="70" y1="477" x2="50" y2="467" stroke="#488034" stroke-width="0.5"/>
     </svg>
   </div>
-
-  <!-- ==========================================
-       HOJAS DECORATIVAS DERECHA (espejo)
-  =========================================== -->
+ 
+  <!-- HOJAS DERECHA -->
   <div class="hojas-lateral hojas-derecha" aria-hidden="true">
-    <svg viewBox="0 0 220 580" xmlns="http://www.w3.org/2000/svg" class="svg-hojas" style="transform: scaleX(-1);">
-      <!-- Tallo principal -->
+    <svg viewBox="0 0 220 580" xmlns="http://www.w3.org/2000/svg" class="svg-hojas" style="transform:scaleX(-1)">
       <path d="M160 580 Q140 480 120 400 Q100 320 90 240 Q80 160 100 80" stroke="#5a7a42" stroke-width="3" fill="none" stroke-linecap="round"/>
-
-      <!-- Hoja 1 -->
       <path d="M100 80 Q40 60 10 100 Q50 130 100 80Z" fill="#6b9e50" stroke="#4a7235" stroke-width="1"/>
       <line x1="100" y1="80" x2="30" y2="97" stroke="#4a7235" stroke-width="0.8"/>
       <line x1="70" y1="88" x2="55" y2="78" stroke="#4a7235" stroke-width="0.5"/>
-      <line x1="55" y1="92" x2="38" y2="86" stroke="#4a7235" stroke-width="0.5"/>
-
-      <!-- Hoja 2 -->
       <path d="M105 110 Q160 80 175 120 Q145 140 105 110Z" fill="#7ab55e" stroke="#558040" stroke-width="1"/>
       <line x1="105" y1="110" x2="165" y2="113" stroke="#558040" stroke-width="0.8"/>
-      <line x1="135" y1="106" x2="145" y2="97" stroke="#558040" stroke-width="0.5"/>
-
-      <!-- Hoja 3 -->
       <path d="M95 165 Q20 145 5 195 Q55 210 95 165Z" fill="#5c9045" stroke="#3d6630" stroke-width="1"/>
       <line x1="95" y1="165" x2="18" y2="185" stroke="#3d6630" stroke-width="0.8"/>
       <line x1="60" y1="172" x2="42" y2="163" stroke="#3d6630" stroke-width="0.5"/>
-      <line x1="38" y1="178" x2="22" y2="172" stroke="#3d6630" stroke-width="0.5"/>
-
-      <!-- Hoja 4 -->
       <path d="M98 200 Q155 175 162 215 Q125 225 98 200Z" fill="#8dc46a" stroke="#60904a" stroke-width="1"/>
       <line x1="98" y1="200" x2="155" y2="205" stroke="#60904a" stroke-width="0.8"/>
-
-      <!-- Hoja 5 -->
       <path d="M92 265 Q15 240 2 295 Q50 315 92 265Z" fill="#649948" stroke="#456830" stroke-width="1"/>
       <line x1="92" y1="265" x2="15" y2="282" stroke="#456830" stroke-width="0.8"/>
       <line x1="55" y1="272" x2="35" y2="262" stroke="#456830" stroke-width="0.5"/>
-      <line x1="32" y1="278" x2="16" y2="273" stroke="#456830" stroke-width="0.5"/>
-
-      <!-- Hoja 6 -->
       <path d="M97 305 Q162 275 172 320 Q135 335 97 305Z" fill="#76b058" stroke="#508038" stroke-width="1"/>
       <line x1="97" y1="305" x2="162" y2="308" stroke="#508038" stroke-width="0.8"/>
-
-      <!-- Hoja 7 -->
       <path d="M95 370 Q10 345 0 405 Q52 418 95 370Z" fill="#5a8c42" stroke="#3c6028" stroke-width="1"/>
       <line x1="95" y1="370" x2="12" y2="390" stroke="#3c6028" stroke-width="0.8"/>
       <line x1="52" y1="378" x2="30" y2="367" stroke="#3c6028" stroke-width="0.5"/>
-
-      <!-- Hoja 8 -->
       <path d="M102 415 Q150 390 158 428 Q128 440 102 415Z" fill="#90c870" stroke="#64924e" stroke-width="1"/>
       <line x1="102" y1="415" x2="150" y2="418" stroke="#64924e" stroke-width="0.8"/>
-
-      <!-- Hoja 9 -->
       <path d="M110 470 Q35 448 22 505 Q70 518 110 470Z" fill="#6aa84e" stroke="#488034" stroke-width="1"/>
       <line x1="110" y1="470" x2="35" y2="488" stroke="#488034" stroke-width="0.8"/>
     </svg>
   </div>
-
-  <!-- ==========================================
-       ENCABEZADO — Nombre de la marca
-  =========================================== -->
-  <header class="encabezado">
+ 
+  <!-- ENCABEZADO -->
+  <header>
     <h1 class="marca">Ecocera</h1>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="Index.html">Inicio</a></li>
+        <li><a href="Galeria.html">Galería</a></li>
+        <li><a href="Contacto.html" class="activo">Contacto</a></li>
+      </ul>
+    </nav>
+    <div class="divisor"></div>
   </header>
-
-  <!-- ==========================================
-       CONTENIDO PRINCIPAL
-  =========================================== -->
-  <main class="principal">
-
-    <!-- Tarjeta 1: Título y descripción -->
-    <div class="tarjeta tarjeta-descripcion">
+ 
+  <!-- PRINCIPAL -->
+  <main>
+ 
+    <!-- Descripción -->
+    <div class="tarjeta-descripcion">
       <h2 class="titulo-contacto">Contacto</h2>
       <p class="texto-descripcion">
         Si deseas más información sobre nuestros productos<br>
-        ecológicos, puedes comunicarte con ecocera<br>
+        ecológicos, puedes comunicarte con Ecocera<br>
         mediante los siguientes datos:
       </p>
     </div>
-
-    <!-- Tarjeta 2: Campos del formulario -->
-    <div class="tarjeta tarjeta-formulario">
-
-      <!-- Fila superior: Nombre y Correo Electrónico -->
-      <div class="fila-doble">
-
-        <!-- Campo Nombre -->
-        <div class="campo">
-          <label class="etiqueta" for="nombre">Nombre</label>
-          <input class="entrada" type="text" id="nombre" name="nombre" autocomplete="off" />
+ 
+    <!-- Formulario -->
+    <div class="tarjeta-formulario">
+      <form id="formulario" novalidate>
+ 
+        <div class="fila-doble">
+          <div class="campo">
+            <label class="etiqueta" for="nombre">Nombre</label>
+            <input class="entrada" type="text" id="nombre" name="nombre" autocomplete="off" />
+            <span class="msg-error" id="error-nombre"></span>
+          </div>
+          <div class="campo">
+            <label class="etiqueta" for="correo">Correo Electrónico</label>
+            <input class="entrada" type="email" id="correo" name="correo" autocomplete="off" />
+            <span class="msg-error" id="error-correo"></span>
+          </div>
         </div>
-
-        <!-- Campo Correo Electrónico -->
-        <div class="campo">
-          <label class="etiqueta" for="correo">Correo Electronico</label>
-          <input class="entrada" type="email" id="correo" name="correo" autocomplete="off" />
+ 
+        <div class="campo campo-mensaje">
+          <label class="etiqueta" for="mensaje">Mensaje</label>
+          <input class="entrada entrada-mensaje" type="text" id="mensaje" name="mensaje" autocomplete="off" />
+          <span class="msg-error" id="error-mensaje"></span>
         </div>
-
-      </div>
-
-      <!-- Campo Mensaje centrado -->
-      <div class="campo campo-mensaje">
-        <label class="etiqueta" for="mensaje">Mensaje</label>
-        <input class="entrada entrada-mensaje" type="text" id="mensaje" name="mensaje" autocomplete="off" />
-      </div>
-
+ 
+      </form>
     </div>
-
-    <!-- Botón enviar fuera de la tarjeta -->
-    <button class="boton-enviar" type="button">Enviar Mensaje</button>
-
+ 
+    <button class="boton-enviar" id="btn-enviar" type="button">Enviar Mensaje</button>
+ 
   </main>
-
-  <!-- ==========================================
-       PIE DE PÁGINA — Redes Sociales
-  =========================================== -->
+ 
+  <!-- FOOTER -->
   <footer class="pie">
-
     <h3 class="titulo-redes">Redes Sociales</h3>
-
     <div class="redes">
-
+ 
       <!-- Instagram -->
       <a href="https://www.instagram.com/Ecocera.cr" target="_blank" rel="noopener noreferrer" class="red-enlace">
-        <!-- Logo oficial Instagram SVG -->
         <svg class="logo-red" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <radialGradient id="grad-ig" cx="30%" cy="107%" r="130%">
@@ -212,50 +406,172 @@
         </svg>
         <span class="nombre-red">Ecocera.cr</span>
       </a>
-
+ 
       <!-- TikTok -->
       <a href="https://www.tiktok.com/@Ecocera.cr" target="_blank" rel="noopener noreferrer" class="red-enlace">
-        <!-- Logo oficial TikTok SVG -->
         <svg class="logo-red" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
           <rect width="48" height="48" rx="11" fill="#010101"/>
-          <!-- Sombra cian -->
           <path d="M31.5 11.5c.5 3.5 2.8 6 6 6.8v4.2c-2.2 0-4.3-.7-6-1.9v8.6c0 4.8-3.9 8.8-8.8 8.8s-8.8-3.9-8.8-8.8 3.9-8.8 8.8-8.8c.4 0 .7 0 1.1.1v4.3c-.4-.1-.7-.1-1.1-.1-2.5 0-4.6 2-4.6 4.6s2 4.6 4.6 4.6 4.6-2 4.6-4.6V11.5h4z" fill="#25F4EE" transform="translate(-1,-1)"/>
-          <!-- Sombra roja -->
           <path d="M31.5 11.5c.5 3.5 2.8 6 6 6.8v4.2c-2.2 0-4.3-.7-6-1.9v8.6c0 4.8-3.9 8.8-8.8 8.8s-8.8-3.9-8.8-8.8 3.9-8.8 8.8-8.8c.4 0 .7 0 1.1.1v4.3c-.4-.1-.7-.1-1.1-.1-2.5 0-4.6 2-4.6 4.6s2 4.6 4.6 4.6 4.6-2 4.6-4.6V11.5h4z" fill="#FE2C55" transform="translate(1,1)"/>
-          <!-- Forma blanca principal -->
           <path d="M31.5 11.5c.5 3.5 2.8 6 6 6.8v4.2c-2.2 0-4.3-.7-6-1.9v8.6c0 4.8-3.9 8.8-8.8 8.8s-8.8-3.9-8.8-8.8 3.9-8.8 8.8-8.8c.4 0 .7 0 1.1.1v4.3c-.4-.1-.7-.1-1.1-.1-2.5 0-4.6 2-4.6 4.6s2 4.6 4.6 4.6 4.6-2 4.6-4.6V11.5h4z" fill="white"/>
         </svg>
         <span class="nombre-red">Ecocera.cr</span>
       </a>
-
+ 
     </div>
-
   </footer>
+ 
+  <!-- NOTIFICACIÓN -->
+  <div id="notificacion"></div>
+ 
+ <script>
+  // ═══════════════════════════════════
+  // CONFIGURACIÓN EMAILJS
+  // ═══════════════════════════════════
 
-  <!-- EmailJS SDK -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <!-- Script del formulario -->
-  <script src="script.js"></script>
+  const EMAILJS_PUBLIC_KEY = '3niYKOmiouE_hk2u_';
+  const EMAILJS_SERVICE_ID = 'service_x9qe9qy';
+  const EMAILJS_TEMPLATE_ID = 'template_n7nrhhj';
 
-  <!-- Notificación de envío (oculta por defecto) -->
-  <div id="notificacion" style="
-    display: none;
-    position: fixed;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #6b9e50;
-    color: white;
-    padding: 14px 32px;
-    border-radius: 30px;
-    font-family: 'Raleway', sans-serif;
-    font-size: 0.92rem;
-    font-weight: 400;
-    letter-spacing: 0.05em;
-    box-shadow: 0 4px 18px rgba(90,122,66,0.35);
-    z-index: 999;
-    transition: opacity 0.4s ease;
-  "></div>
+  emailjs.init({
+    publicKey: EMAILJS_PUBLIC_KEY
+  });
 
+  // ── Notificación flotante ──
+  function mostrarNotificacion(texto, esError = false) {
+    const notif = document.getElementById('notificacion');
+
+    notif.textContent = texto;
+    notif.className = esError ? 'error-notif' : '';
+
+    notif.style.display = 'block';
+    notif.style.opacity = '1';
+
+    setTimeout(() => {
+      notif.style.opacity = '0';
+
+      setTimeout(() => {
+        notif.style.display = 'none';
+      }, 400);
+
+    }, 3500);
+  }
+
+  // ── Validación ──
+  function validarCampo(id, errorId, validar) {
+    const campo = document.getElementById(id);
+    const error = document.getElementById(errorId);
+
+    const valido = validar(campo.value.trim());
+
+    if (!valido.ok) {
+      campo.classList.add('error');
+      error.textContent = valido.msg;
+    } else {
+      campo.classList.remove('error');
+      error.textContent = '';
+    }
+
+    return valido.ok;
+  }
+
+  function esEmailValido(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  // ── Evento enviar ──
+  document.getElementById('btn-enviar')
+    .addEventListener('click', function () {
+
+      const btn = this;
+
+      const okNombre = validarCampo(
+        'nombre',
+        'error-nombre',
+        v => v.length >= 2
+          ? { ok: true }
+          : { ok: false, msg: 'Ingresa tu nombre.' }
+      );
+
+      const okCorreo = validarCampo(
+        'correo',
+        'error-correo',
+        v => esEmailValido(v)
+          ? { ok: true }
+          : { ok: false, msg: 'Correo inválido.' }
+      );
+
+      const okMensaje = validarCampo(
+        'mensaje',
+        'error-mensaje',
+        v => v.length >= 5
+          ? { ok: true }
+          : { ok: false, msg: 'Escribe un mensaje.' }
+      );
+
+      if (!okNombre || !okCorreo || !okMensaje) return;
+
+      btn.disabled = true;
+      btn.textContent = 'Enviando...';
+
+      const templateParams = {
+        nombre: document.getElementById('nombre').value.trim(),
+        correo: document.getElementById('correo').value.trim(),
+        mensaje: document.getElementById('mensaje').value.trim(),
+      };
+
+      emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams
+      )
+      .then((response) => {
+        console.log('SUCCESS!', response);
+
+        mostrarNotificacion('¡Mensaje enviado con éxito!');
+
+        document.getElementById('formulario').reset();
+
+        ['nombre', 'correo', 'mensaje'].forEach(id => {
+          document.getElementById(id)
+            .classList.remove('error');
+        });
+
+        ['error-nombre', 'error-correo', 'error-mensaje']
+          .forEach(id => {
+            document.getElementById(id).textContent = '';
+          });
+      })
+      .catch((error) => {
+        console.error('ERROR COMPLETO:', error);
+        console.log('Status:', error.status);
+        console.log('Text:', error.text);
+
+        mostrarNotificacion(
+          'Hubo un error al enviar.',
+          true
+        );
+      })
+      .finally(() => {
+        btn.disabled = false;
+        btn.textContent = 'Enviar Mensaje';
+      });
+    });
+
+  // ── Quitar error mientras escribe ──
+  ['nombre', 'correo', 'mensaje'].forEach(id => {
+
+    document.getElementById(id)
+      .addEventListener('input', function () {
+
+        this.classList.remove('error');
+
+        document.getElementById(
+          'error-' + id
+        ).textContent = '';
+      });
+  });
+</script>
+ 
 </body>
 </html>
