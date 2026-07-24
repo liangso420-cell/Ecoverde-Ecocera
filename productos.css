@@ -1,7 +1,7 @@
 ﻿:root {
   --cream: var(--crema);
   --cream-dark: #d4ce9e;
-  --cream-card: #ddd8b8;
+  --cream-card: #f7f4ec;
   --green-deep: var(--verde-oscuro);
   --green-mid: var(--verde-medio);
   --brown: #6b5040;
@@ -13,9 +13,9 @@
 
 /* ── Layout wrapper ── */
 .page-wrapper {
-  max-width: 860px;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 0 80px;
+  padding: 20px 80px 40px;
 }
 
 .page-header {
@@ -89,76 +89,104 @@
 /* ── Product grid ── */
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
 }
 
 .product-card {
-  background: var(--cream-card);
-  border-radius: 12px;
+  background: #ffffff;
+  border-radius: 20px;
   overflow: hidden;
-  border: 1px solid rgba(100, 120, 70, 0.18);
-  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1.5px solid rgba(107, 158, 80, 0.25);
+  box-shadow: 0 6px 20px rgba(74, 114, 53, 0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
+  position: relative;
+}
+.product-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--verde-oscuro), var(--verde-claro), var(--verde-oscuro));
+  z-index: 2;
 }
 .product-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(50, 80, 30, 0.13);
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(74, 114, 53, 0.18);
 }
 
 .product-image {
   width: 100%;
   aspect-ratio: 1 / 1;
-  background: var(--cream-dark);
+  background: linear-gradient(145deg, #f0ebda, #e3ddc5);
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
 }
-.product-image svg {
-  width: 48px;
-  height: 48px;
-  opacity: 0.45;
-}
 .product-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: 85%;
+  height: 85%;
+  object-fit: contain;
   display: block;
+  transition: transform 0.4s ease;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.08));
+}
+.product-card:hover .product-image img {
+  transform: scale(1.1);
 }
 .img-corner {
   position: absolute;
-  width: 12px;
-  height: 12px;
-  border-color: rgba(80, 100, 50, 0.35);
+  width: 18px;
+  height: 18px;
+  border-color: var(--verde-medio);
   border-style: solid;
+  opacity: 0.5;
+  z-index: 1;
 }
-.img-corner.tl { top: 8px; left: 8px; border-width: 2px 0 0 2px; }
-.img-corner.tr { top: 8px; right: 8px; border-width: 2px 2px 0 0; }
-.img-corner.bl { bottom: 8px; left: 8px; border-width: 0 0 2px 2px; }
-.img-corner.br { bottom: 8px; right: 8px; border-width: 0 2px 2px 0; }
+.img-corner.tl { top: 10px; left: 10px; border-width: 3px 0 0 3px; }
+.img-corner.tr { top: 10px; right: 10px; border-width: 3px 3px 0 0; }
+.img-corner.bl { bottom: 10px; left: 10px; border-width: 0 0 3px 3px; }
+.img-corner.br { bottom: 10px; right: 10px; border-width: 0 3px 3px 0; }
 
 .product-info {
-  padding: 12px 14px 14px;
+  padding: 20px 22px 24px;
+  text-align: center;
+  background: linear-gradient(180deg, #faf9f5, #f5f2ea);
 }
 .product-name {
   font-family: 'Lato', sans-serif;
-  font-size: 13px;
-  font-weight: 400;
+  font-size: 16px;
+  font-weight: 600;
   color: var(--text-dark);
-  margin-bottom: 4px;
+  margin-bottom: 6px;
+  text-transform: capitalize;
+  letter-spacing: 0.03em;
 }
 .product-price {
   font-family: 'Playfair Display', serif;
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 700;
   color: var(--green-deep);
+  margin-bottom: 8px;
+}
+.product-description {
+  font-family: 'Lato', sans-serif;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  font-weight: 400;
 }
 
 /* ── Responsive mobile layout ── */
 @media (max-width: 768px) {
   .page-wrapper {
-    padding: 0 18px;
+    padding: 16px 18px;
+    max-width: 100%;
   }
 
   .page-header {
@@ -187,18 +215,30 @@
 
   .product-grid {
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 24px;
+    max-width: 400px;
+    margin: 0 auto;
   }
 
   .product-card {
-    border-radius: 14px;
+    border-radius: 16px;
   }
 
   .product-image {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 1 / 1;
   }
 
   .product-info {
-    padding: 14px 16px 16px;
+    padding: 16px 18px 20px;
+  }
+  
+  .product-name {
+    font-size: 15px;
+  }
+  .product-price {
+    font-size: 18px;
+  }
+  .product-description {
+    font-size: 12px;
   }
 }
