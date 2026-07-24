@@ -1,46 +1,14 @@
-﻿*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-:root {
-  --cream: #e8e3c8;
+﻿:root {
+  --cream: var(--crema);
   --cream-dark: #d4ce9e;
   --cream-card: #ddd8b8;
-  --green-deep: #3a5c3a;
-  --green-mid: #5a7a4a;
+  --green-deep: var(--verde-oscuro);
+  --green-mid: var(--verde-medio);
   --brown: #6b5040;
-  --text-dark: #2e2e1e;
-  --text-muted: #6b6b4a;
+  --text-dark: var(--texto);
+  --text-muted: var(--texto-suave);
   --white-soft: #f5f2e3;
   --border-leaf: rgba(80, 110, 60, 0.25);
-}
-
-body {
-  font-family: 'Lato', sans-serif;
-  background-color: var(--cream);
-  color: var(--text-dark);
-  min-height: 100vh;
-  position: relative;
-  overflow-x: hidden;
-}
-
-/* ── Leaf border decorations ── */
-.leaf-border {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  width: 72px;
-  pointer-events: none;
-  z-index: 10;
-  background-repeat: repeat-y;
-  background-size: 72px auto;
-  opacity: 0.88;
-}
-.leaf-border.left {
-  left: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='120' viewBox='0 0 72 120'%3E%3Cellipse cx='18' cy='30' rx='13' ry='22' fill='%234a7a3a' transform='rotate(-25 18 30)'/%3E%3Cellipse cx='28' cy='70' rx='11' ry='19' fill='%235a8a4a' transform='rotate(15 28 70)'/%3E%3Cellipse cx='10' cy='95' rx='12' ry='20' fill='%233a6a2a' transform='rotate(-35 10 95)'/%3E%3Cellipse cx='35' cy='110' rx='10' ry='17' fill='%234d7a3d' transform='rotate(10 35 110)'/%3E%3Cline x1='18' y1='30' x2='18' y2='52' stroke='%23306020' stroke-width='1.2'/%3E%3Cline x1='28' y1='70' x2='28' y2='89' stroke='%23306020' stroke-width='1.2'/%3E%3Cline x1='10' y1='95' x2='10' y2='115' stroke='%23306020' stroke-width='1.2'/%3E%3C/svg%3E");
-}
-.leaf-border.right {
-  right: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='120' viewBox='0 0 72 120'%3E%3Cellipse cx='54' cy='25' rx='13' ry='22' fill='%235a8a4a' transform='rotate(20 54 25)'/%3E%3Cellipse cx='44' cy='65' rx='11' ry='19' fill='%234a7a3a' transform='rotate(-18 44 65)'/%3E%3Cellipse cx='60' cy='92' rx='12' ry='20' fill='%233a6a2a' transform='rotate(30 60 92)'/%3E%3Cellipse cx='38' cy='108' rx='10' ry='17' fill='%234d7a3d' transform='rotate(-12 38 108)'/%3E%3Cline x1='54' y1='25' x2='54' y2='47' stroke='%23306020' stroke-width='1.2'/%3E%3Cline x1='44' y1='65' x2='44' y2='84' stroke='%23306020' stroke-width='1.2'/%3E%3Cline x1='60' y1='92' x2='60' y2='112' stroke='%23306020' stroke-width='1.2'/%3E%3C/svg%3E");
 }
 
 /* ── Layout wrapper ── */
@@ -48,52 +16,6 @@ body {
   max-width: 860px;
   margin: 0 auto;
   padding: 0 80px;
-}
-
-/* ── Navbar ── */
-nav {
-  display: flex;
-  align-items: center;
-  padding: 18px 0 14px;
-  gap: 20px;
-  border-bottom: 1px solid var(--border-leaf);
-}
-.logo-circle {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background: var(--white-soft);
-  border: 2px solid var(--green-mid);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.logo-circle img {
-  width: 104px;
-  height: 104px;
-  object-fit: contain;
-}
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 32px;
-  margin: 0;
-}
-nav ul li a {
-  text-decoration: none;
-  font-family: 'Lato', sans-serif;
-  font-size: 15px;
-  font-weight: 400;
-  color: var(--text-dark);
-  letter-spacing: 0.02em;
-  transition: color 0.2s;
-}
-nav ul li a:hover { color: var(--green-deep); }
-nav ul li.active a {
-  font-family: 'Playfair Display', serif;
-  font-weight: 600;
-  font-size: 16px;
-  color: var(--text-dark);
 }
 
 .page-header {
@@ -167,7 +89,7 @@ nav ul li.active a {
 /* ── Product grid ── */
 .product-grid {
   display: grid;
-    grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .product-card {
@@ -237,32 +159,6 @@ nav ul li.active a {
 @media (max-width: 768px) {
   .page-wrapper {
     padding: 0 18px;
-  }
-
-  .leaf-border {
-    display: none;
-  }
-
-  nav {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 14px;
-    padding: 16px 0 12px;
-  }
-
-  .logo-circle {
-    width: 88px;
-    height: 88px;
-  }
-
-  .logo-circle img {
-    width: 72px;
-    height: 72px;
-  }
-
-  nav ul {
-    gap: 18px;
-    justify-content: center;
   }
 
   .page-header {

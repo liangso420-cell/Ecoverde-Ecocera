@@ -5,20 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ecocera — Contacto</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
- 
-    :root {
-      --verde-oscuro: #4a7235;
-      --verde-medio: #6b9e50;
-      --verde-claro: #8dc46a;
-      --crema: #f8f5ef;
-      --crema-oscuro: #ede8de;
-      --texto: #2c3e20;
-      --texto-suave: #5a6e4a;
-    }
- 
+
     body {
       font-family: 'Raleway', sans-serif;
       background-color: var(--crema);
@@ -30,65 +21,7 @@
       overflow-x: hidden;
       position: relative;
     }
- 
-    /* ── HOJAS LATERALES ── */
-    .hojas-lateral {
-      position: fixed;
-      top: 0;
-      width: 180px;
-      height: 100vh;
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.85;
-    }
-    .hojas-izquierda { left: 0; }
-    .hojas-derecha   { right: 0; }
-    .svg-hojas { width: 100%; height: 100%; }
- 
-    /* ── ENCABEZADO ── */
-    header {
-      width: 100%;
-      text-align: center;
-      padding: 2.5rem 1rem 1rem;
-      position: relative;
-      z-index: 10;
-    }
-    .marca {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(2rem, 5vw, 3rem);
-      font-weight: 500;
-      letter-spacing: 0.18em;
-      color: var(--verde-oscuro);
-      text-transform: uppercase;
-    }
-    .nav-links {
-      margin-top: 0.8rem;
-      display: flex;
-      gap: 2rem;
-      justify-content: center;
-      list-style: none;
-    }
-    .nav-links a {
-      font-family: 'Raleway', sans-serif;
-      font-size: 0.78rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--texto-suave);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover,
-    .nav-links a.activo { color: var(--verde-oscuro); }
- 
-    /* ── SEPARADOR ── */
-    .divisor {
-      width: 60px;
-      height: 1.5px;
-      background: var(--verde-medio);
-      margin: 0.5rem auto 0;
-      opacity: 0.6;
-    }
- 
+
     /* ── PRINCIPAL ── */
     main {
       position: relative;
@@ -101,7 +34,7 @@
       align-items: center;
       gap: 1.6rem;
     }
- 
+
     /* ── TARJETA DESCRIPCIÓN ── */
     .tarjeta-descripcion {
       text-align: center;
@@ -121,7 +54,7 @@
       letter-spacing: 0.04em;
       color: var(--texto-suave);
     }
- 
+
     /* ── TARJETA FORMULARIO ── */
     .tarjeta-formulario {
       width: 100%;
@@ -131,17 +64,17 @@
       padding: 2rem 2rem 1.8rem;
       box-shadow: 0 4px 24px rgba(74,114,53,0.08);
     }
- 
+
     .fila-doble {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1.2rem;
       margin-bottom: 1.2rem;
     }
- 
+
     .campo { display: flex; flex-direction: column; gap: 0.4rem; }
     .campo-mensaje { margin-top: 0.2rem; }
- 
+
     .etiqueta {
       font-family: 'Raleway', sans-serif;
       font-size: 0.72rem;
@@ -150,7 +83,7 @@
       color: var(--texto-suave);
       font-weight: 500;
     }
- 
+
     .entrada {
       font-family: 'Raleway', sans-serif;
       font-size: 0.88rem;
@@ -166,9 +99,9 @@
     }
     .entrada:focus { border-color: var(--verde-medio); }
     .entrada.error { border-color: #c0392b; }
- 
+
     .entrada-mensaje { width: 100%; }
- 
+
     /* ── MENSAJE DE ERROR ── */
     .msg-error {
       font-size: 0.7rem;
@@ -176,7 +109,7 @@
       letter-spacing: 0.05em;
       min-height: 14px;
     }
- 
+
     /* ── BOTÓN ENVIAR ── */
     .boton-enviar {
       font-family: 'Raleway', sans-serif;
@@ -201,7 +134,7 @@
       cursor: not-allowed;
       transform: none;
     }
- 
+
     /* ── FOOTER ── */
     footer {
       position: relative;
@@ -236,7 +169,7 @@
       letter-spacing: 0.08em;
       color: var(--texto-suave);
     }
- 
+
     /* ── NOTIFICACIÓN ── */
     #notificacion {
       display: none;
@@ -257,75 +190,16 @@
       transition: opacity 0.4s ease;
     }
     #notificacion.error-notif { background: #c0392b; }
- 
+
     /* ── RESPONSIVE ── */
     @media (max-width: 560px) {
-      .hojas-lateral { width: 100px; }
       .fila-doble { grid-template-columns: 1fr; }
       .tarjeta-formulario { padding: 1.5rem 1.2rem; }
     }
   </style>
 </head>
 <body>
- 
-  <!-- HOJAS IZQUIERDA -->
-  <div class="hojas-lateral hojas-izquierda" aria-hidden="true">
-    <svg viewBox="0 0 220 580" xmlns="http://www.w3.org/2000/svg" class="svg-hojas">
-      <path d="M160 580 Q140 480 120 400 Q100 320 90 240 Q80 160 100 80" stroke="#5a7a42" stroke-width="3" fill="none" stroke-linecap="round"/>
-      <path d="M100 80 Q40 60 10 100 Q50 130 100 80Z" fill="#6b9e50" stroke="#4a7235" stroke-width="1"/>
-      <line x1="100" y1="80" x2="30" y2="97" stroke="#4a7235" stroke-width="0.8"/>
-      <line x1="70" y1="88" x2="55" y2="78" stroke="#4a7235" stroke-width="0.5"/>
-      <path d="M105 110 Q160 80 175 120 Q145 140 105 110Z" fill="#7ab55e" stroke="#558040" stroke-width="1"/>
-      <line x1="105" y1="110" x2="165" y2="113" stroke="#558040" stroke-width="0.8"/>
-      <path d="M95 165 Q20 145 5 195 Q55 210 95 165Z" fill="#5c9045" stroke="#3d6630" stroke-width="1"/>
-      <line x1="95" y1="165" x2="18" y2="185" stroke="#3d6630" stroke-width="0.8"/>
-      <line x1="60" y1="172" x2="42" y2="163" stroke="#3d6630" stroke-width="0.5"/>
-      <path d="M98 200 Q155 175 162 215 Q125 225 98 200Z" fill="#8dc46a" stroke="#60904a" stroke-width="1"/>
-      <line x1="98" y1="200" x2="155" y2="205" stroke="#60904a" stroke-width="0.8"/>
-      <path d="M92 265 Q15 240 2 295 Q50 315 92 265Z" fill="#649948" stroke="#456830" stroke-width="1"/>
-      <line x1="92" y1="265" x2="15" y2="282" stroke="#456830" stroke-width="0.8"/>
-      <line x1="55" y1="272" x2="35" y2="262" stroke="#456830" stroke-width="0.5"/>
-      <path d="M97 305 Q162 275 172 320 Q135 335 97 305Z" fill="#76b058" stroke="#508038" stroke-width="1"/>
-      <line x1="97" y1="305" x2="162" y2="308" stroke="#508038" stroke-width="0.8"/>
-      <path d="M95 370 Q10 345 0 405 Q52 418 95 370Z" fill="#5a8c42" stroke="#3c6028" stroke-width="1"/>
-      <line x1="95" y1="370" x2="12" y2="390" stroke="#3c6028" stroke-width="0.8"/>
-      <line x1="52" y1="378" x2="30" y2="367" stroke="#3c6028" stroke-width="0.5"/>
-      <path d="M102 415 Q150 390 158 428 Q128 440 102 415Z" fill="#90c870" stroke="#64924e" stroke-width="1"/>
-      <line x1="102" y1="415" x2="150" y2="418" stroke="#64924e" stroke-width="0.8"/>
-      <path d="M110 470 Q35 448 22 505 Q70 518 110 470Z" fill="#6aa84e" stroke="#488034" stroke-width="1"/>
-      <line x1="110" y1="470" x2="35" y2="488" stroke="#488034" stroke-width="0.8"/>
-    </svg>
-  </div>
- 
-  <!-- HOJAS DERECHA -->
-  <div class="hojas-lateral hojas-derecha" aria-hidden="true">
-    <svg viewBox="0 0 220 580" xmlns="http://www.w3.org/2000/svg" class="svg-hojas" style="transform:scaleX(-1)">
-      <path d="M160 580 Q140 480 120 400 Q100 320 90 240 Q80 160 100 80" stroke="#5a7a42" stroke-width="3" fill="none" stroke-linecap="round"/>
-      <path d="M100 80 Q40 60 10 100 Q50 130 100 80Z" fill="#6b9e50" stroke="#4a7235" stroke-width="1"/>
-      <line x1="100" y1="80" x2="30" y2="97" stroke="#4a7235" stroke-width="0.8"/>
-      <line x1="70" y1="88" x2="55" y2="78" stroke="#4a7235" stroke-width="0.5"/>
-      <path d="M105 110 Q160 80 175 120 Q145 140 105 110Z" fill="#7ab55e" stroke="#558040" stroke-width="1"/>
-      <line x1="105" y1="110" x2="165" y2="113" stroke="#558040" stroke-width="0.8"/>
-      <path d="M95 165 Q20 145 5 195 Q55 210 95 165Z" fill="#5c9045" stroke="#3d6630" stroke-width="1"/>
-      <line x1="95" y1="165" x2="18" y2="185" stroke="#3d6630" stroke-width="0.8"/>
-      <line x1="60" y1="172" x2="42" y2="163" stroke="#3d6630" stroke-width="0.5"/>
-      <path d="M98 200 Q155 175 162 215 Q125 225 98 200Z" fill="#8dc46a" stroke="#60904a" stroke-width="1"/>
-      <line x1="98" y1="200" x2="155" y2="205" stroke="#60904a" stroke-width="0.8"/>
-      <path d="M92 265 Q15 240 2 295 Q50 315 92 265Z" fill="#649948" stroke="#456830" stroke-width="1"/>
-      <line x1="92" y1="265" x2="15" y2="282" stroke="#456830" stroke-width="0.8"/>
-      <line x1="55" y1="272" x2="35" y2="262" stroke="#456830" stroke-width="0.5"/>
-      <path d="M97 305 Q162 275 172 320 Q135 335 97 305Z" fill="#76b058" stroke="#508038" stroke-width="1"/>
-      <line x1="97" y1="305" x2="162" y2="308" stroke="#508038" stroke-width="0.8"/>
-      <path d="M95 370 Q10 345 0 405 Q52 418 95 370Z" fill="#5a8c42" stroke="#3c6028" stroke-width="1"/>
-      <line x1="95" y1="370" x2="12" y2="390" stroke="#3c6028" stroke-width="0.8"/>
-      <line x1="52" y1="378" x2="30" y2="367" stroke="#3c6028" stroke-width="0.5"/>
-      <path d="M102 415 Q150 390 158 428 Q128 440 102 415Z" fill="#90c870" stroke="#64924e" stroke-width="1"/>
-      <line x1="102" y1="415" x2="150" y2="418" stroke="#64924e" stroke-width="0.8"/>
-      <path d="M110 470 Q35 448 22 505 Q70 518 110 470Z" fill="#6aa84e" stroke="#488034" stroke-width="1"/>
-      <line x1="110" y1="470" x2="35" y2="488" stroke="#488034" stroke-width="0.8"/>
-    </svg>
-  </div>
- 
+
   <!-- ENCABEZADO -->
   <header>
     <h1 class="marca">Ecocera</h1>
@@ -338,10 +212,10 @@
     </nav>
     <div class="divisor"></div>
   </header>
- 
+
   <!-- PRINCIPAL -->
   <main>
- 
+
     <!-- Descripción -->
     <div class="tarjeta-descripcion">
       <h2 class="titulo-contacto">Contacto</h2>
@@ -351,11 +225,11 @@
         mediante los siguientes datos:
       </p>
     </div>
- 
+
     <!-- Formulario -->
     <div class="tarjeta-formulario">
       <form id="formulario" novalidate>
- 
+
         <div class="fila-doble">
           <div class="campo">
             <label class="etiqueta" for="nombre">Nombre</label>
@@ -367,26 +241,25 @@
             <input class="entrada" type="email" id="correo" name="correo" autocomplete="off" />
             <span class="msg-error" id="error-correo"></span>
           </div>
-        </div>
- 
+
         <div class="campo campo-mensaje">
           <label class="etiqueta" for="mensaje">Mensaje</label>
           <input class="entrada entrada-mensaje" type="text" id="mensaje" name="mensaje" autocomplete="off" />
           <span class="msg-error" id="error-mensaje"></span>
         </div>
- 
+
       </form>
     </div>
- 
+
     <button class="boton-enviar" id="btn-enviar" type="button">Enviar Mensaje</button>
- 
+
   </main>
- 
+
   <!-- FOOTER -->
   <footer class="pie">
     <h3 class="titulo-redes">Redes Sociales</h3>
     <div class="redes">
- 
+
       <!-- Instagram -->
       <a href="https://www.instagram.com/Ecocera.cr" target="_blank" rel="noopener noreferrer" class="red-enlace">
         <svg class="logo-red" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
@@ -406,13 +279,13 @@
         </svg>
         <span class="nombre-red">Ecocera.cr</span>
       </a>
-      
+
     </div>
   </footer>
- 
+
   <!-- NOTIFICACIÓN -->
   <div id="notificacion"></div>
- 
+
  <script>
   // ═══════════════════════════════════
   // CONFIGURACIÓN EMAILJS
@@ -561,6 +434,6 @@
       });
   });
 </script>
- 
+
 </body>
 </html>
