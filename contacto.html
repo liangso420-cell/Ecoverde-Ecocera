@@ -66,14 +66,27 @@
     }
 
     .fila-doble {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       gap: 1.2rem;
       margin-bottom: 1.2rem;
+      width: 100%;
     }
 
-    .campo { display: flex; flex-direction: column; gap: 0.4rem; }
-    .campo-mensaje { margin-top: 0.2rem; }
+    .campo {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      width: 100%;
+      max-width: 380px;
+      align-items: center;
+    }
+    .campo-mensaje {
+      margin-top: 0.2rem;
+      max-width: 380px;
+      align-items: center;
+    }
 
     .etiqueta {
       font-family: 'Raleway', sans-serif;
@@ -96,11 +109,18 @@
       outline: none;
       transition: border-color 0.25s;
       width: 100%;
+      text-align: left;
     }
     .entrada:focus { border-color: var(--verde-medio); }
     .entrada.error { border-color: #c0392b; }
 
-    .entrada-mensaje { width: 100%; }
+    .entrada-mensaje {
+      width: 100%;
+      min-height: 120px;
+      resize: vertical;
+      line-height: 1.6;
+      font-family: 'Raleway', sans-serif;
+    }
 
     /* ── MENSAJE DE ERROR ── */
     .msg-error {
@@ -193,8 +213,9 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 560px) {
-      .fila-doble { grid-template-columns: 1fr; }
       .tarjeta-formulario { padding: 1.5rem 1.2rem; }
+      .campo { max-width: 100%; }
+      .campo-mensaje { max-width: 100%; }
     }
   </style>
 </head>
@@ -210,7 +231,6 @@
         <li><a href="contacto.html" class="activo">Contacto</a></li>
       </ul>
     </nav>
-    <div class="divisor"></div>
   </header>
 
   <!-- PRINCIPAL -->
@@ -244,7 +264,7 @@
 
         <div class="campo campo-mensaje">
           <label class="etiqueta" for="mensaje">Mensaje</label>
-          <input class="entrada entrada-mensaje" type="text" id="mensaje" name="mensaje" autocomplete="off" />
+          <textarea class="entrada entrada-mensaje" id="mensaje" name="mensaje" autocomplete="off" rows="5"></textarea>
           <span class="msg-error" id="error-mensaje"></span>
         </div>
 
@@ -434,6 +454,8 @@
       });
   });
 </script>
-
+  <footer>
+    © 2025 Ecocera · Convierte Contaminación En Iluminación
+  </footer>
 </body>
 </html>
